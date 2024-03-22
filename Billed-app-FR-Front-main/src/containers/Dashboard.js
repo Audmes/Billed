@@ -86,7 +86,7 @@ export default class {
   }
 
   handleEditTicket(e, bill, bills) {
-    /* Fix bug Issue4 */
+    /* Fix bug Issue 4 */
     e.stopPropagation();
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
@@ -133,7 +133,7 @@ export default class {
   }
 
   handleShowTickets(e, bills, index) {
-    /* Fix bug Issue4 */
+    /* Fix bug Issue 4 */
     e.stopPropagation();
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index

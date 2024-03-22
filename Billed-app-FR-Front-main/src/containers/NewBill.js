@@ -20,7 +20,7 @@ export default class NewBill {
   }
 
   handleChangeFile = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     e.preventDefault();
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0];
     const filePath = e.target.value.split(/\\/g);
