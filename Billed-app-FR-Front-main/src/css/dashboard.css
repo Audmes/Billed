@@ -5,6 +5,7 @@
 
 .dashboard-right-container {
   position: absolute;
+  /* position: fixed; Added by me */
   left: 530px;
   top: 50px;
   border: 2px solid #F3F5FA;
@@ -116,4 +117,3 @@
   transform: rotate(90deg);
   cursor: pointer;
 }
-

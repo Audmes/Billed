@@ -1,8 +1,8 @@
-import calendarIcon from '../assets/svg/calendar.js'
-import euroIcon from '../assets/svg/euro.js'
-import pctIcon from '../assets/svg/pct.js'
-import eyeWhite from '../assets/svg/eye_white.js'
-import { formatDate } from '../app/format.js'
+import calendarIcon from '../assets/svg/calendar.js';
+import euroIcon from '../assets/svg/euro.js';
+import pctIcon from '../assets/svg/pct.js';
+import eyeWhite from '../assets/svg/eye_white.js';
+import { formatDate } from '../app/format.js';
 
 export const modal = () => (`
   <div class="modal fade" id="modaleFileAdmin1" data-testid="modaleFileAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -19,7 +19,7 @@ export const modal = () => (`
       </div>
     </div>
   </div>
-  `)
+  `);
 
 export default (bill) => {
 
@@ -27,31 +27,31 @@ export default (bill) => {
     <div class="container dashboard-form" data-testid="dashboard-form">
       <div class="row">
         <div class="col-sm" id="dashboard-form-col1">
-          <label for="expense-type" class="bold-label">Type de dépense</label>
+          <div title="expense-type" class="bold-label">Type de dépense</div>
           <div class='input-field'> ${bill.type} </div>
-          <label for="expense-name" class="bold-label">Nom de la dépense</label>
+          <div title="expense-name" class="bold-label">Nom de la dépense</div>
           <div class='input-field'> ${bill.name} </div>
-          <label for="datepicker" class="bold-label">Date</label>
+          <div title="datepicker" class="bold-label">Date</div>
           <div class='input-field input-flex'>
             <span>${formatDate(bill.date)}</span>
             <span> ${calendarIcon} </span>
           </div>
         </div>
         <div class="col-sm" id="dashboard-form-col2">
-          <label for="commentary" class="bold-label">Commentaire</label>
+          <div title="commentary" class="bold-label">Commentaire</div>
           <div class='textarea-field' style="height: 300px;"> ${bill.commentary} </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm">
-          <label for="amount" class="bold-label">Montant TTC </label>
+          <div title="amount" class="bold-label">Montant TTC </div>
           <div class='input-field input-flex'>
             <span data-testid="amount-d">${bill.amount}</span>
             <span> ${euroIcon} </span>
           </div>
         </div>
         <div class="col-sm">
-          <label for="vat" class="bold-label">TVA</label>
+          <div title="vat" class="bold-label">TVA</div>
           <div id='vat-flex-container'>
             <div class='input-field input-flex vat-flex'>
               <span>${bill.vat}</span>
@@ -66,7 +66,7 @@ export default (bill) => {
       </div>
       <div class="row">
         <div class="col-sm">
-          <label for="file" class="bold-label">Justificatif</label>
+          <div title="file" class="bold-label">Justificatif</div>
             <div class='input-field input-flex file-flex'>
             <span id="file-name-admin">${bill.fileName}</span>
             <div class='icons-container'>
@@ -78,7 +78,7 @@ export default (bill) => {
       <div class="row">
        ${bill.status === 'pending' ? (`
         <div class="col-sm">
-          <label for="commentary-admin" class="bold-label">Ajouter un commentaire</label>
+          <label for="commentary2" class="bold-label">Ajouter un commentaire</label>
           <textarea id="commentary2" class="form-control blue-border" data-testid="commentary2" rows="5"></textarea>
         </div>
        `) : (`
@@ -98,5 +98,5 @@ export default (bill) => {
     </div>
     ${modal()}
     </div>
-  `)
+  `);
 }
