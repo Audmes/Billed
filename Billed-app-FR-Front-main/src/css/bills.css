@@ -31,6 +31,7 @@
   font-weight: 500;
   font-size: 48px;
   line-height: 56px;
+  padding-left: 40px; /* Added by me */
 }
 
 #btn-new-bill {
@@ -111,5 +112,11 @@ tr td:nth-of-type(5) {
 }
 
 .bill-proof-container {
-  overflow: scroll;
+  /* overflow: scroll; */
+  overflow: hidden;
+}
+
+/* Added by me */
+.bill-proof-container img {
+  width: 100%;
 }

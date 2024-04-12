@@ -1,36 +1,44 @@
-import VerticalLayout from './VerticalLayout.js'
-import ErrorPage from "./ErrorPage.js"
-import LoadingPage from "./LoadingPage.js"
+import VerticalLayout from './VerticalLayout.js';
+import ErrorPage from "./ErrorPage.js";
+import LoadingPage from "./LoadingPage.js";
 
-import Actions from './Actions.js'
+import Actions from './Actions.js';
 
 const row = (bill) => {
-  return (`
-    <tr>
-      <td>${bill.type}</td>
-      <td>${bill.name}</td>
-      <td>${bill.date}</td>
-      <td>${bill.amount} €</td>
-      <td>${bill.status}</td>
-      <td>
-        ${Actions(bill.fileUrl)}
-      </td>
-    </tr>
-    `)
-  }
+    return (`
+        <tr>
+            <td>${bill.type}</td>
+            <td>${bill.name}</td>
+            <td>${bill.date}</td>
+            <td>${bill.amount} €</td>
+            <td>${bill.status}</td>
+            <td>
+                ${Actions(bill.fileUrl)}
+            </td>
+        </tr>
+    `);
+};
 
 const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
-}
+  // return (data && data.length) ? data.map(bill => row(bill)).join("") : "";
+  return data && data.length 
+    ? data
+        /* Fix le bug Issue 1*/
+        // .sort((a, b) => (a.date < b.date ? 1 : -1))
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((bill) => row(bill))
+        .join("")
+    : "";
+};
 
 export default ({ data: bills, loading, error }) => {
   
   const modal = () => (`
-    <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modaleFile" tabindex="-1" data-testid="modal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Justificatif</h5>
+            <h5 class="modal-title" data-testid="modal-title" id="exampleModalLongTitle">Justificatif</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -40,17 +48,17 @@ export default ({ data: bills, loading, error }) => {
         </div>
       </div>
     </div>
-  `)
+  `);
 
   if (loading) {
-    return LoadingPage()
+    return LoadingPage();
   } else if (error) {
-    return ErrorPage(error)
+    return ErrorPage(error);
   }
   
   return (`
     <div class='layout'>
-      ${VerticalLayout(120)}
+      ${VerticalLayout(100)}
       <div class='content'>
         <div class='content-header'>
           <div class='content-title'> Mes notes de frais </div>
@@ -76,5 +84,5 @@ export default ({ data: bills, loading, error }) => {
       </div>
       ${modal()}
     </div>`
-  )
+  );
 }
