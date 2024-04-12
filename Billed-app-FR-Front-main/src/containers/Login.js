@@ -24,9 +24,9 @@ export default class Login {
       password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
       status: "connected",
     };
-    this.localStorage.setItem("user", JSON.stringify(user));
+    this.localStorage.setItem("user", JSON.stringify(user));    
     this.login(user)
-      // .catch((err) => this.createUser(user))
+      // .catch(() => this.createUser(user))
       .then(() => {
         this.onNavigate(ROUTES_PATH['Bills']);
         this.PREVIOUS_LOCATION = ROUTES_PATH['Bills'];
@@ -45,15 +45,18 @@ export default class Login {
       password: e.target.querySelector(`input[data-testid="admin-password-input"]`).value,
       status: "connected",
     };
+
+    // const userExists = this.login(user).then((v) => console.log(v));
+
     this.localStorage.setItem("user", JSON.stringify(user));
     this.login(user)
-      // .catch((err) => this.createUser(user))
+      // .catch(() => this.createUser(user))
       .then(() => {
         this.onNavigate(ROUTES_PATH['Dashboard']);
         this.PREVIOUS_LOCATION = ROUTES_PATH['Dashboard'];
         PREVIOUS_LOCATION = this.PREVIOUS_LOCATION;
         document.body.style.backgroundColor="#fff";
-      });
+      })
   };
 
   // not need to cover this function by tests
@@ -66,9 +69,9 @@ export default class Login {
         password: user.password,
       }))
       .then(({jwt}) => {
-        localStorage.setItem('jwt', jwt)
+        localStorage.setItem('jwt', jwt);
       })
-      .catch((error) => error);
+      // .catch((error) => error);
     } else {
       return null;
     }

@@ -27,26 +27,26 @@ describe("Given that I am a user on login page", () => {
     });
   });
 
-  describe("When I do fill fields in incorrect format and I click on employee button Login In", () => {
-    test("Then It should renders Login page", () => {
-      document.body.innerHTML = LoginUI();
+    describe("When I do fill fields in incorrect format and I click on employee button Login In", () => {
+        test("Then It should renders Login page", () => {
+            document.body.innerHTML = LoginUI();
 
-      const inputEmailUser = screen.getByTestId("employee-email-input");
-      fireEvent.change(inputEmailUser, { target: { value: "pasunemail" } });
-      expect(inputEmailUser.value).toBe("pasunemail");
+            const inputEmailUser = screen.getByTestId("employee-email-input");
+            fireEvent.change(inputEmailUser, { target: { value: "pasunemail" } });
+            expect(inputEmailUser.value).toBe("pasunemail");
 
-      const inputPasswordUser = screen.getByTestId("employee-password-input");
-      fireEvent.change(inputPasswordUser, { target: { value: "azerty" } });
-      expect(inputPasswordUser.value).toBe("azerty");
+            const inputPasswordUser = screen.getByTestId("employee-password-input");
+            fireEvent.change(inputPasswordUser, { target: { value: "azerty" } });
+            expect(inputPasswordUser.value).toBe("azerty");
 
-      const form = screen.getByTestId("form-employee");
-      const handleSubmit = jest.fn((e) => e.preventDefault());
+            const form = screen.getByTestId("form-employee");
+            const handleSubmit = jest.fn((e) => e.preventDefault());
 
-      form.addEventListener("submit", handleSubmit);
-      fireEvent.submit(form);
-      expect(screen.getByTestId("form-employee")).toBeTruthy();
+            form.addEventListener("submit", handleSubmit);
+            fireEvent.submit(form);
+            expect(screen.getByTestId("form-employee")).toBeTruthy();
+        });
     });
-  });
 
   describe("When I do fill fields in correct format and I click on employee button Login In", () => {
     test("Then I should be identified as an Employee in app", () => {
