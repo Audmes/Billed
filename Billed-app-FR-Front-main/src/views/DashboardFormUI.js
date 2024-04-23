@@ -68,10 +68,15 @@ export default (bill) => {
         <div class="col-sm">
           <div title="file" class="bold-label">Justificatif</div>
             <div class='input-field input-flex file-flex'>
-            <span id="file-name-admin">${bill.fileName}</span>
-            <div class='icons-container'>
-              <span id="icon-eye-d" data-testid="icon-eye-d" data-bill-url="${bill.fileUrl}"> ${eyeWhite} </span>
-            </div>
+              <!-- Fix le bug Issue 3 -->
+              <!-- Check if bill.fileName is not "null" -->
+              ${bill.fileName && bill.fileName.toLowerCase() !== "null" 
+                ? ` <span id="file-name-admin">${bill.fileName}</span>
+                    <div class='icons-container'>
+                      <span id="icon-eye-d" data-testid="icon-eye-d" data-bill-url="${bill.fileUrl}"> ${eyeWhite} </span>
+                    </div> `
+                : ` <span>Pas de justificatif</span> `
+              }
           </div>
         </div>
       </div>
