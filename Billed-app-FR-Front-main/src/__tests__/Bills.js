@@ -23,8 +23,12 @@ import userEvent from "@testing-library/user-event";
 jest.mock("../app/store", () => mockStore);
 
 // Test for BillsUI.js
+// Je suis connecté en tant qu’employé
 describe("Given I am connected as an employee", () => {
+    // Quand je suis sur la page Bills
     describe("When I am on Bills Page", () => {
+        // Scénario 5 - E2E
+        // L’icône Bill dans la barre verticale doit être mis en surbrillance.
         test("Then bill icon in vertical layout should be highlighted", async () => {
             Object.defineProperty(window, 'localStorage', { value: localStorageMock });
             window.localStorage.setItem('user', JSON.stringify({
@@ -42,6 +46,8 @@ describe("Given I am connected as an employee", () => {
             expect(windowIcon.classList.contains("active-icon")).toBe(true); /* Added by me */
         });
 
+        // Scénario 6 - E2E
+        // Les factures sont triées par ordre du plus récent au plus ancien
         test("Then bills should be ordered from earliest to latest", () => {
             document.body.innerHTML = BillsUI({ data: bills });
             const dates = screen.getAllByText(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i).map(a => a.innerHTML);
@@ -51,6 +57,8 @@ describe("Given I am connected as an employee", () => {
         });
     });
 
+    // Scénario 7 - E2E
+    // Quand je suis sur la page Bills, il y a un titre et un bouton New Bill
     describe("When I am on Bills page, there are a title and a newBill button", () => {
         test("Then, the title and the button should be render correctly", () => {
             document.body.innerHTML = BillsUI({ data: [] });
@@ -59,9 +67,11 @@ describe("Given I am connected as an employee", () => {
         });
     });
 
-    // Scénario 10 - E2E
     /* Added by me */
+    // Scénario 8 - E2E
+    // Quand je clique sur le bouton visualisé
     describe("When employee click on eye Button", () => {
+        // Une modale s’ouvre et affiche le visuel de mon justificatif
         test("Then modal should be displayed", () => {
             const onNavigate = (pathname) => {
                 document.body.innerHTML = ROUTES({ pathname });
@@ -105,12 +115,14 @@ describe("Given I am connected as an employee", () => {
         });
     });
 
-    // Scénario 4 - E2E
     /* Added by me */
+    // Scénario 4 - E2E
+    // Je clique sur le bouton Nouvelle note de frais
     describe("When employee click on new bill", () => {
+        // Je suis envoyé sur la page New Bill
         test("Then form should be displayed", () => {
-        const onNavigate = (pathname) => {
-            document.body.innerHTML = ROUTES({ pathname });
+            const onNavigate = (pathname) => {
+                document.body.innerHTML = ROUTES({ pathname });
         };
 
         Object.defineProperty(window, "localStorage", {

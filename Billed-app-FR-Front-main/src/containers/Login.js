@@ -24,7 +24,11 @@ export default class Login {
       password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
       status: "connected",
     };
-    this.localStorage.setItem("user", JSON.stringify(user));    
+    this.localStorage.setItem("user", JSON.stringify(user));   
+    
+    // const userExists = this.login(user);
+    // userExists.catch((e) => Promise.reject(Error(e)));
+
     this.login(user)
       // .catch(() => this.createUser(user))
       .then(() => {

@@ -26,8 +26,12 @@ const bills = [{
   "pct": 20,
 }]
 
+// Scénario 16 - E2E
+// Je suis connectée.
 describe('Given I am connected', () => {
+  // Quand je clique sur le bouton se déconnecter
   describe('When I click on disconnect button', () => {
+    // Je suis envoyé sur la page d’accueil.
     test(('Then, I should be sent to login page'), () => {
       const onNavigate = (pathname) => {
         document.body.innerHTML = ROUTES({ pathname })

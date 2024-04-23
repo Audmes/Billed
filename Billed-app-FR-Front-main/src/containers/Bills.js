@@ -75,11 +75,11 @@ export default class Bills { /* Bills était manquant */
                         // if for some reason, corrupted data was introduced, we manage here failing formatDate function
                         // log the error and return unformatted date in that case
                         console.log(e,'for',doc);
-                        // return {
-                        //   ...doc,
-                        //   date: doc.date,
-                        //   status: formatStatus(doc.status)
-                        // };
+                        return {
+                          ...doc,
+                          date: doc.date,
+                          status: formatStatus(doc.status)
+                        };
                     }
                 });
                 // .filter((bill) => bill.email === userEmail);
