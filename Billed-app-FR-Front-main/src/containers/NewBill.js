@@ -81,7 +81,7 @@ export default class NewBill {
         });
     }else {
       // Si le format est invalide on indique le bon format
-      fileChamp.setCustomValidity("Le format doit être JPG, JPEG ou PNG");
+      return fileChamp.setCustomValidity("Le format doit être JPG, JPEG ou PNG");
     }
   };
 

@@ -163,9 +163,6 @@ describe("Given I am connected as an employee", () => {
                 fireEvent.submit(submitBtn)
                 expect(handleSubmit).toHaveBeenCalled()
             });
-            // test('Then I should be redirected to Bills page', () => {
-            //     expect(screen.getAllByText('Mes notes de frais')).toBeTruthy();
-            // });
         });
 
         // Scénario 14 - E2E

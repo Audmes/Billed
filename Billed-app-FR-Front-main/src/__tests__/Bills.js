@@ -122,35 +122,32 @@ describe("Given I am connected as an employee", () => {
         test("Then, It should renders NewBill page and a form should be displayed", () => {
             const onNavigate = (pathname) => {
                 document.body.innerHTML = ROUTES({ pathname });
-        };
+            };
 
-        Object.defineProperty(window, "localStorage", {
-            value: localStorageMock,
-        });
-        window.localStorage.setItem(
-            "user",
-            JSON.stringify({
-            type: "Employee",
-            })
-        );
+            Object.defineProperty(
+                window, "localStorage", { value: localStorageMock, })
+                window.localStorage.setItem(
+                    "user",
+                    JSON.stringify({ type: "Employee", })
+            );
 
-        const billsDashboard = new Bills({
-            document,
-            onNavigate,
-            store: null,
-            bills: bills,
-            localStorage: window.localStorage,
-        });
+            const billsDashboard = new Bills({
+                document,
+                onNavigate,
+                store: null,
+                bills: bills,
+                localStorage: window.localStorage,
+            });
 
-        const newBillBtn = screen.getByTestId("btn-new-bill");
-        const handleClickNewBill = jest.fn(billsDashboard.handleClickNewBill);
+            const newBillBtn = screen.getByTestId("btn-new-bill");
+            const handleClickNewBill = jest.fn(billsDashboard.handleClickNewBill);
 
-        newBillBtn.addEventListener("click", handleClickNewBill);
-        userEvent.click(newBillBtn);
+            newBillBtn.addEventListener("click", handleClickNewBill);
+            userEvent.click(newBillBtn);
 
-        expect(handleClickNewBill).toHaveBeenCalled();
-        expect(screen.getByText("Envoyer une note de frais")).toBeTruthy();
-        expect(screen.getByTestId("form-new-bill")).toBeTruthy();
+            expect(handleClickNewBill).toHaveBeenCalled();
+            expect(screen.getByText("Envoyer une note de frais")).toBeTruthy();
+            expect(screen.getByTestId("form-new-bill")).toBeTruthy();
         });
     });
 });
