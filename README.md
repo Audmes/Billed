@@ -16,7 +16,7 @@ Ce projet consiste à débugger et tester un SaaS RH.
 - Ecrire des tests d'intégration avec JavaScript
 
 ### Informations complémentaires
-- Soutenance validé le : ...
+- Soutenance validé le : 25/04/2024
 
 ### Comment lancer l'application en local ?
 
