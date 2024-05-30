@@ -18,6 +18,18 @@ Ce projet consiste à débugger et tester un SaaS RH.
 ### Informations complémentaires
 - Soutenance validé le : 25/04/2024
 
+#### Livrable
+##### Points forts :
+
+- bon projet, les attentes sont satisfaites
+
+#### Soutenance
+##### Remarques :
+
+- bonne présentation
+- le support de présentation a permis de suivre facilement le déroulé.
+- Le sujet est compris 
+
 ### Comment lancer l'application en local ?
 
 #### étape 1 - Lancer le backend :
